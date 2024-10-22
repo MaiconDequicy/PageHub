@@ -1,6 +1,6 @@
 # Page Hub
 
-Page Hub é uma aplicação Android desenvolvida para praticar e explorar o Jetpack Compose, a nova ferramenta da Google para construção de interfaces de usuário de forma declarativa. 
+Page Hub é uma aplicação Android que está sendo desenvolvida para praticar e explorar o Jetpack Compose, a nova ferramenta da Google para construção de interfaces de usuário de forma declarativa. 
 
 ## Objetivo
 
@@ -12,5 +12,5 @@ A aplicação oferece:
 
 - Gerenciamento de leituras: os usuários podem visualizar informações sobre livros.
 - Adição de novos títulos: os usuários têm a possibilidade de adicionar novos livros ao seu acervo.
-- Interação social: permite que os usuários escrevam resenhas e comentem sobre os livros.
+- Interação social: permitir que os usuários escrevam resenhas e comentem sobre os livros.
 - Navegação simplificada: oferece uma experiência de uso intuitiva e acessível.
