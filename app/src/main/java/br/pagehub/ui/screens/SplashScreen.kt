@@ -1,4 +1,4 @@
-package br.pagehub
+package br.pagehub.ui.screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
