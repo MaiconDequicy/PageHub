@@ -1,6 +1,6 @@
 # Page Hub 📚
 
-Page Hub é um aplicativo mobile desenvolvido para oferecer uma experiência interativa e offline para leitores. Com ele, você pode descobrir novos livros, organizar suas leituras e registrar suas opiniões de forma prática e intuitiva, tudo salvo localmente no seu dispositivo.
+Page Hub é um aplicativo mobile em desenvolvimento, criado para oferecer uma experiência interativa e offline para leitores. Com ele, você pode descobrir novos livros, organizar suas leituras e registrar suas opiniões de forma prática e intuitiva, tudo salvo localmente no seu dispositivo.
 
 ## 🚀 Objetivo do Projeto
 
