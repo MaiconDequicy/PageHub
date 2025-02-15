@@ -8,7 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import br.pagehub.R
+import br.pagehub.ui.fragments.Biblioteca
+import br.pagehub.ui.fragments.BuscarLivros
+import br.pagehub.ui.fragments.Inicio
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Feed : AppCompatActivity()
 {
@@ -29,9 +34,30 @@ class Feed : AppCompatActivity()
         setSupportActionBar(toolbarFeed)
 
         supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
-            setHomeButtonEnabled(true)
+            setDisplayHomeAsUpEnabled(false)
+            setHomeButtonEnabled(false)
             setTitle("")
         }
+
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationViewFeed)
+
+        replaceFragment(Inicio())
+
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when(item.itemId)
+            {
+                R.id.nav_home -> replaceFragment(Inicio())
+                R.id.nav_busca -> replaceFragment(BuscarLivros())
+                R.id.nav_estante -> replaceFragment(Biblioteca())
+            }
+            true
+        }
+
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
     }
 }
