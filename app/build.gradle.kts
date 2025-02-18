@@ -57,6 +57,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
+    implementation("androidx.fragment:fragment-ktx:1.5.5")
     //picasso
 
     implementation ("com.squareup.picasso:picasso:2.71828")
@@ -72,4 +73,6 @@ dependencies {
     //rxjava
 
     implementation("io.reactivex.rxjava2:rxandroid:2.0.1")
+
+    implementation("androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7")
 }

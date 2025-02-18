@@ -1,16 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.Inicio">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- LinearLayout que contém os componentes principais -->
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Título: Livros Populares -->
+        <TextView
+            android:id="@+id/labelLivrosPopulares"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Livros Populares"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- RecyclerView para Livros Populares -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerLivrosPopulares"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never" />
+
+        <!-- Título: Livros Recomendados -->
+        <TextView
+            android:id="@+id/labelLivrosRecomendados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Livros Recomendados"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- RecyclerView para Livros Recomendados -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerLivrosRecomendados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never" />
+    </LinearLayout>
+
+    <!-- Botão Flutuante para Adicionar Livros -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdicionarLivro"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:text="Bem Vindo, senhor!" />
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:backgroundTint="@color/cor01"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:tint="@android:color/white"/>
 
 </FrameLayout>
