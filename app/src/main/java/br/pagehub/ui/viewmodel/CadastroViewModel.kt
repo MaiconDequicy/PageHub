@@ -17,7 +17,6 @@ class CadastroViewModel(application: Application) : AndroidViewModel(application
         repository = UserRepository(userDao)
     }
 
-    // Função para salvar o usuário
     fun inserirUsuario(user: User) {
         viewModelScope.launch {
             repository.inserir(user)

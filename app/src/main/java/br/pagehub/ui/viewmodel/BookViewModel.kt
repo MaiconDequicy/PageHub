@@ -9,14 +9,17 @@ import br.pagehub.model.BookItem
 import br.pagehub.repository.BookRepository
 import kotlinx.coroutines.launch
 
-class BookViewModel : ViewModel() {
-    private val repository = BookRepository()
+class BookViewModel(private val repository: BookRepository) : ViewModel() {
 
     private val _livrosPopulares = MutableLiveData<List<BookItem>?>()
     val livrosPopulares: LiveData<List<BookItem>?> get() = _livrosPopulares
 
     private val _livrosRecomendados = MutableLiveData<List<BookItem>?>()
     val livrosRecomendados: LiveData<List<BookItem>?> get() = _livrosRecomendados
+
+    //LiveData para armazenar os livros pesquisados pelo usuário
+    private val _livrosPesquisados = MutableLiveData<List<BookItem>?>()
+    val livrosPesquisados: LiveData<List<BookItem>?> get() = _livrosPesquisados
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
@@ -26,7 +29,6 @@ class BookViewModel : ViewModel() {
         carregarLivrosRecomendados()
     }
 
-    // Carregar livros populares com uma categoria específica
     private fun carregarLivrosPopulares() {
         viewModelScope.launch {
             try {
@@ -45,7 +47,7 @@ class BookViewModel : ViewModel() {
         }
     }
 
-    // Carregar livros recomendados com uma categoria específica
+
     private fun carregarLivrosRecomendados() {
         viewModelScope.launch {
             try {
@@ -63,4 +65,29 @@ class BookViewModel : ViewModel() {
             }
         }
     }
+
+     fun pesquisarLivros(query: String)
+    {
+        viewModelScope.launch {
+            try {
+                val resultado = repository.searchBooks(query)
+                if(resultado.isNotEmpty())
+                {
+                    _livrosPesquisados.value = resultado //atualiza  a livedata com os resultados
+                    Log.d("BookViewModel", "Livros Pesquisados: $resultado")
+                }
+                else
+                {
+                    _errorMessage.value = "Nenhum livro foi encontrado para '$query'"
+                    Log.e("BookViewModel", "Nenhum livro encontrado para '$query'")
+                }
+            }
+            catch (e: Exception)
+            {
+                _errorMessage.value = "Erro ao buscar livros: ${e.message}"
+                Log.e("BookViewModel", "Erro ao buscar livros", e)
+            }
+        }
+    }
+
 }

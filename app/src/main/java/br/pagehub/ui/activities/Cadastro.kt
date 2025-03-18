@@ -59,16 +59,12 @@ class Cadastro : AppCompatActivity() {
             return
         }
 
-        // Criando o objeto usuário
         val user = User(name = nome, username = nomeUsuario, email = email, password = senha)
 
-        // Inserir usuário no ViewModel (supondo que o método inserirUsuario tenha uma maneira de indicar sucesso ou falha)
         cadastroViewModel.inserirUsuario(user)
 
-        // Verificar se o cadastro foi bem-sucedido
         Toast.makeText(this, "Cadastro Feito!", Toast.LENGTH_SHORT).show()
 
-        // Redireciona para o Login
-        finish()  // Fechando a tela de cadastro e indo para o login automaticamente
+        finish()
     }
 }

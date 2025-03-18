@@ -31,21 +31,21 @@ class BookAdapter : ListAdapter<BookItem, BookAdapter.BookViewHolder>(BookDiffCa
         private val txtAuthor: TextView = itemView.findViewById(R.id.bookAuthor)
 
         fun bind(book: BookItem) {
-            // Verificar se o título é nulo ou vazio
+            //Verificar se o título é nulo ou vazio
             txtTitle.text = book.volumeInfo.title ?: "Título desconhecido"
 
-            // Verificar se os autores são nulos ou vazios
+            //Verificar se os autores são nulos ou vazios
             txtAuthor.text = book.volumeInfo.authors?.joinToString(", ") ?: "Autor desconhecido"
 
-            // Verificar se há imagem, caso contrário usar imagem padrão
+            //verificar se há imagem, caso contrário usar imagem padrão
             val thumbnailUrl = book.volumeInfo.imageLinks?.thumbnail
             if (!thumbnailUrl.isNullOrEmpty()) {
-                // Ajusta a URL da imagem (caso necessário)
+                //Ajusta a URL da imagem (caso necessário)
                 val fixedUrl = thumbnailUrl.replace("http://", "https://")
 
                 Picasso.get()
                     .load(fixedUrl)
-                    .placeholder(R.drawable.livro2)  // Imagem que será exibida enquanto carrega
+                    .placeholder(R.drawable.livro2)  //Imagem que será exibida enquanto carrega
                     .into(imgCover, object : com.squareup.picasso.Callback {
                         override fun onSuccess() {
                             Log.d("Picasso", "Imagem carregada com sucesso")
@@ -58,18 +58,18 @@ class BookAdapter : ListAdapter<BookItem, BookAdapter.BookViewHolder>(BookDiffCa
                     })
 
             } else {
-                imgCover.setImageResource(R.drawable.livro2)  // Coloque uma imagem padrão se não houver thumbnail
+                imgCover.setImageResource(R.drawable.livro2)  //Coloque uma imagem padrão se não houver thumbnail
             }
         }
     }
 
     class BookDiffCallback : DiffUtil.ItemCallback<BookItem>() {
         override fun areItemsTheSame(oldItem: BookItem, newItem: BookItem): Boolean {
-            return oldItem.id == newItem.id  // Verifica se os livros são os mesmos
+            return oldItem.id == newItem.id  //Verifica se os livros são os mesmos
         }
 
         override fun areContentsTheSame(oldItem: BookItem, newItem: BookItem): Boolean {
-            return oldItem == newItem  // Verifica se o conteúdo dos livros é igual
+            return oldItem == newItem  //Verifica se o conteúdo dos livros é igual
         }
     }
 }

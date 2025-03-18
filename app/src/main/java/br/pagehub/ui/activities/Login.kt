@@ -25,15 +25,13 @@ class Login : AppCompatActivity() {
 
         val window: Window = window
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.statusBarColor = getColor(R.color.cor01) // Substitua pelo ID da cor desejada
+            window.statusBarColor = getColor(R.color.cor01)
         }
 
-        // Configuração do clique no botão de cadastro
         binding.botaoTelaCadastro.setOnClickListener {
             irTelaCadastro()
         }
 
-        // Configuração do clique no botão de login
         binding.botaoLogin.setOnClickListener {
             autenticarUsuario()
         }

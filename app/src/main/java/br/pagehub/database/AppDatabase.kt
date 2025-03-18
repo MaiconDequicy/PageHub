@@ -14,7 +14,6 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
 
-        //Usar um singleton para garantir que só exista uma instância do banco
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
