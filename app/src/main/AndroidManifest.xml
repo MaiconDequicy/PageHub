@@ -15,7 +15,7 @@
         android:theme="@style/Theme.PageHub"
         tools:targetApi="31">
         <activity
-            android:name=".Detalhes_Livro"
+            android:name=".ui.activities.Detalhes_Livro"
             android:exported="false" />
         <activity
             android:name=".ui.activities.AddLivro"

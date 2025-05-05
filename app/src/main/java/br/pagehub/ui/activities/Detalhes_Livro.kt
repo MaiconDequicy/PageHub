@@ -1,10 +1,11 @@
-package br.pagehub
+package br.pagehub.ui.activities
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import br.pagehub.R
 
 class Detalhes_Livro : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

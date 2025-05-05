@@ -1,58 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarAddBook"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/cor01"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:navigationIcon="@drawable/baseline_arrow_back_ios_new_24">
 
-        <ImageView
-            android:id="@+id/imageViewCapaLivro"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:scaleType="centerCrop"
-            android:contentDescription="Capa do livro" />
-        <!-- Título -->
         <TextView
-            android:id="@+id/textViewTitulo"
-            android:layout_width="match_parent"
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Título do Livro"
-            android:textSize="24sp"
+            android:layout_gravity="center"
+            android:text="Detalhes do Livro"
+            android:textColor="@color/white"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginTop="16dp" />
+            android:textSize="25sp" />
+    </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/textViewAutor"
+    <!-- ScrollView para conteúdo do livro -->
+    <ScrollView
+        android:id="@+id/scrollViewContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbarAddBook"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Autor do Livro"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="4dp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewGeneros"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ficção, Drama"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp" />
+            <ImageView
+                android:id="@+id/imageViewCapaLivro"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="Capa do livro" />
 
-        <!-- Descrição -->
-        <TextView
-            android:id="@+id/textViewDescricao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descrição do livro aqui..."
-            android:textSize="16sp"
-            android:layout_marginTop="16dp" />
+            <TextView
+                android:id="@+id/textViewTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Título do Livro"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp" />
 
-    </LinearLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/textViewAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Autor do Livro"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/textViewGeneros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ficção, Drama"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/textViewDescricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descrição do livro aqui..."
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
