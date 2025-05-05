@@ -15,11 +15,13 @@
         android:theme="@style/Theme.PageHub"
         tools:targetApi="31">
         <activity
+            android:name=".Detalhes_Livro"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.AddLivro"
             android:exported="false"
-            android:screenOrientation="portrait"
             android:parentActivityName=".ui.activities.Feed"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.Feed"
             android:exported="false"
