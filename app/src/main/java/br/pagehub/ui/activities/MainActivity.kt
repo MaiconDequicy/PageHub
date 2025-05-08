@@ -7,10 +7,10 @@ import android.os.Looper
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import br.pagehub.R
-import java.util.logging.Handler
 
 class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         handler.postDelayed(
             {
-                irTelaLogin()
+                irFeed()
             }, 2000)
 
     }
@@ -31,6 +31,13 @@ class MainActivity : AppCompatActivity() {
     private fun irTelaLogin()
     {
         val intent = Intent(this, Login::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun irFeed()
+    {
+        val intent = Intent(this, Feed::class.java)
         startActivity(intent)
         finish()
     }

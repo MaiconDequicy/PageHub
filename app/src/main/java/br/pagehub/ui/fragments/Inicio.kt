@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.pagehub.R
+import br.pagehub.model.BookItem
 import br.pagehub.repository.BookRepository
 import br.pagehub.ui.activities.AddLivro
 import br.pagehub.ui.adapter.BookAdapter
@@ -49,13 +50,13 @@ class Inicio : Fragment() {
         recyclerViewPopulares.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerViewRecomendados.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-        adapterPopulares = BookAdapter()
-        adapterRecomendados = BookAdapter()
+        adapterPopulares = BookAdapter {book -> irParaDetalhesLivro(book)}
+        adapterRecomendados = BookAdapter{book -> irParaDetalhesLivro(book)}
 
         recyclerViewPopulares.adapter = adapterPopulares
         recyclerViewRecomendados.adapter = adapterRecomendados
 
-        val repository = BookRepository() // ou como você está instanciando o repositório
+        val repository = BookRepository()
 
         val factory = BookViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory).get(BookViewModel::class.java)
@@ -80,6 +81,19 @@ class Inicio : Fragment() {
 
     private fun irTelaAddBook() {
         val intent = Intent(requireContext(), AddLivro::class.java)
+        startActivity(intent)
+    }
+
+    private fun irParaDetalhesLivro(book: BookItem)
+    {
+        val context = requireContext()
+        val intent = Intent(context, br.pagehub.ui.activities.Detalhes_Livro::class.java).apply {
+            putExtra("titulo", book.volumeInfo.title)
+            putExtra("autor", book.volumeInfo.authors?.joinToString(","))
+            putExtra("imagemUrl", book.volumeInfo.imageLinks?.thumbnail?.replace("http://", "https://"))
+            putExtra("descricao", book.volumeInfo.description)
+            putExtra("generos", book.volumeInfo.categories?.joinToString(","))
+        }
         startActivity(intent)
     }
 }

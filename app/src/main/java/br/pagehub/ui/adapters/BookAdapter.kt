@@ -61,7 +61,7 @@ class BookAdapter(
             }
 
             itemView.setOnClickListener {
-                onItemClick(book)  // 🔥 Chama o clique passando o livro
+                onItemClick(book)
             }
         }
     }
