@@ -1,6 +1,7 @@
 package br.pagehub.ui.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.Window
@@ -43,7 +44,17 @@ class AddLivro : AppCompatActivity() {
             setTitle("")
         }
 
-        adapter = BookAdapter()
+        adapter = BookAdapter{livroSelecionado ->
+
+            val intent = Intent(this, Detalhes_Livro::class.java).apply {
+                putExtra("titulo", livroSelecionado.volumeInfo.title)
+                putExtra("autor", livroSelecionado.volumeInfo.authors?.joinToString(","))
+                putExtra("imagemUrl", livroSelecionado.volumeInfo.imageLinks?.thumbnail?.replace("http://", "https://"))
+                putExtra("descricao", livroSelecionado.volumeInfo.description)
+                putExtra("generos", livroSelecionado.volumeInfo.categories?.joinToString(","))
+            }
+            startActivity(intent)
+        }
 
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewLivros)
