@@ -20,7 +20,8 @@ import br.pagehub.viewmodel.BookViewModel
 import br.pagehub.viewmodel.BookViewModelFactory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class Inicio : Fragment() {
+class Inicio : Fragment()
+{
     private lateinit var viewModel: BookViewModel
     private lateinit var recyclerViewPopulares: RecyclerView
     private lateinit var recyclerViewRecomendados: RecyclerView
@@ -35,7 +36,8 @@ class Inicio : Fragment() {
         return inflater.inflate(R.layout.fragment_inicio, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
+    {
         super.onViewCreated(view, savedInstanceState)
 
         //Inicializa os RecyclerViews
@@ -66,7 +68,7 @@ class Inicio : Fragment() {
             if (livros.isNullOrEmpty()) {
                 Log.e("InicioFragment", "Livros populares estão vazios")
             } else {
-                adapterPopulares.submitList(livros)  // Atualiza a lista de livros populares
+                adapterPopulares.submitList(livros)
             }
         })
 
@@ -74,7 +76,7 @@ class Inicio : Fragment() {
             if (livros.isNullOrEmpty()) {
                 Log.e("InicioFragment", "Livros recomendados estão vazios")
             } else {
-                adapterRecomendados.submitList(livros)  // Atualiza a lista de livros recomendados
+                adapterRecomendados.submitList(livros)
             }
         })
     }

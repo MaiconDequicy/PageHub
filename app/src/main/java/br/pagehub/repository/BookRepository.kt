@@ -31,13 +31,12 @@ class BookRepository {
         return try {
             val response = apiService.getBooksByCategory(query, "relevance")
             if (response.isSuccessful) {
-                response.body()?.items ?: emptyList() // Retorna os livros ou uma lista vazia
+                response.body()?.items ?: emptyList()
             } else {
-                // Pode logar o erro para identificar o problema em detalhes
+
                 emptyList()
             }
         } catch (e: Exception) {
-            // Aqui você pode adicionar um log ou enviar um erro
             emptyList()
         }
     }
