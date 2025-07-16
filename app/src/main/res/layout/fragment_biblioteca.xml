@@ -6,11 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.Biblioteca">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewBiblioteca"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="item_livro_biblo.xml" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBiblioteca"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="item_livro_biblo.xml"/>
+    </LinearLayout>
 </FrameLayout>
