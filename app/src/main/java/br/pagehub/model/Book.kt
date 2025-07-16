@@ -6,5 +6,3 @@ data class Book(
     val autor: String,
     val coverUrl: String
 )
-
-

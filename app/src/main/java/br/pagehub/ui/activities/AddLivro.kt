@@ -18,7 +18,6 @@ import br.pagehub.viewmodel.BookViewModel
 import br.pagehub.viewmodel.BookViewModelFactory
 
 class AddLivro : AppCompatActivity() {
-    // Usando o viewModels() e passando a fábrica
     private val viewModel: BookViewModel by viewModels {
         BookViewModelFactory(BookRepository())
     }
@@ -62,7 +61,6 @@ class AddLivro : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.adapter = adapter
 
-        //configurando o widget de busca
         val searchView = findViewById<SearchView>(R.id.searchViewLivros)
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

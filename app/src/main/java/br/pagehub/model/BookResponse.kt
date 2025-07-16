@@ -1,7 +1,7 @@
 package br.pagehub.model
 
 data class BookResponse(
-    val items: List<BookItem>?  // A lista de livros retornados pela pesquisa
+    val items: List<BookItem>?
 )
 
 data class BookItem(

@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import br.pagehub.model.LivroSalvo
 import br.pagehub.room.LivroSalvoDao
 
-class LivroSalvoRepository(private val dao: LivroSalvoDao) {
+class LivroSalvoRepository(private val dao: LivroSalvoDao)
+{
 
     fun getTodosLivros(): LiveData<List<LivroSalvo>> = dao.getTodosLivros()
 
