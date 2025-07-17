@@ -1,5 +1,6 @@
 package br.pagehub.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.pagehub.R
 import br.pagehub.repository.LivroSalvoRepository
+import br.pagehub.ui.activities.LivroSalvoDetalhesActivity
 import br.pagehub.ui.adapters.LivrosSalvosAdapter
 import br.pagehub.ui.viewmodel.LivroSalvoViewModel
 import com.example.pagehub.data.database.AppDatabase
@@ -40,7 +42,15 @@ class Biblioteca : Fragment(R.layout.fragment_biblioteca) {
 
     private fun setupRecyclerView(view: View) {
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewBiblioteca)
-        livrosAdapter = LivrosSalvosAdapter()
+
+
+        livrosAdapter = LivrosSalvosAdapter { livroClicado ->
+            val intent = Intent(requireContext(), LivroSalvoDetalhesActivity::class.java).apply {
+                putExtra("LIVRO_ID", livroClicado.id)
+            }
+            startActivity(intent)
+        }
+
         recyclerView.adapter = livrosAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }

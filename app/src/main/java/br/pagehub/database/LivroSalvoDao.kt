@@ -6,6 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update // Importe a anotação @Update
 import br.pagehub.model.LivroSalvo
 
 @Dao
@@ -22,4 +23,10 @@ interface LivroSalvoDao {
 
     @Delete
     suspend fun deletarLivro(livro: LivroSalvo)
+
+    @Update
+    suspend fun atualizarLivro(livro: LivroSalvo)
+
+    @Query("SELECT * FROM livros_salvos WHERE id = :idDoLivro")
+    fun getLivroPorId(idDoLivro: Int): LiveData<LivroSalvo>
 }

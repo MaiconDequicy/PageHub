@@ -1,4 +1,4 @@
-package br.pagehub.ui.adapters // Ou o pacote onde seus adapters estão
+package br.pagehub.ui.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,26 +13,33 @@ import br.pagehub.R
 import br.pagehub.model.LivroSalvo
 import com.squareup.picasso.Picasso
 
+class LivrosSalvosAdapter(
+    private val onItemClicked: (LivroSalvo) -> Unit
+) : ListAdapter<LivroSalvo, LivrosSalvosAdapter.LivroSalvoViewHolder>(LivroSalvoDiffCallback()) {
 
-class LivrosSalvosAdapter : ListAdapter<LivroSalvo, LivrosSalvosAdapter.LivroSalvoViewHolder>(LivroSalvoDiffCallback()) {
 
     class LivroSalvoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // Encontre os componentes do seu layout do item (o CardView)
         private val capa: ImageView = itemView.findViewById(R.id.imageViewCapa)
         private val titulo: TextView = itemView.findViewById(R.id.textViewTitulo)
         private val autor: TextView = itemView.findViewById(R.id.textViewAutor)
         private val status: TextView = itemView.findViewById(R.id.textViewStatusLeitura)
 
-        fun bind(livro: LivroSalvo) {
+
+        fun bind(livro: LivroSalvo, onItemClicked: (LivroSalvo) -> Unit) {
+
             titulo.text = livro.titulo
             autor.text = livro.autor
             status.text = livro.statusLeitura
 
+            //Configura o clique no item inteiro
+            itemView.setOnClickListener {
+                onItemClicked(livro)
+            }
+
+            //Carrega a imagem da capa usando Picasso
             val urlImagem = livro.imagemUrl
             if (!urlImagem.isNullOrEmpty()) {
                 val urlSegura = urlImagem.replace("http://", "https://")
-
-
                 Picasso.get()
                     .load(urlSegura)
                     .placeholder(R.drawable.livro2)
@@ -57,8 +64,11 @@ class LivrosSalvosAdapter : ListAdapter<LivroSalvo, LivrosSalvosAdapter.LivroSal
         return LivroSalvoViewHolder(view)
     }
 
+
     override fun onBindViewHolder(holder: LivroSalvoViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val livro = getItem(position)
+
+        holder.bind(livro, onItemClicked)
     }
 }
 
